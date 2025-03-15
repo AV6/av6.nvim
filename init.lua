@@ -42,13 +42,14 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- [[ AV6 specific ]]
 vim.keymap.set('n', '<C-s>', ':w<cr>')
-vim.keymap.set('n', '<leader>q', ':q<cr>')
+vim.keymap.set('n', '<leader>q', ':q!<cr>')
 vim.keymap.set('n', '<leader>w', ':w<cr>')
 
 vim.keymap.set('n', '<S-l>', ':BufferLineCycleNext<CR>')
 vim.keymap.set('n', '<S-h>', ':BufferLineCyclePrev<CR>')
-vim.keymap.set('n', '<S-q>', '<cmd>BufferKill<CR>')
+vim.keymap.set('n', '<S-q>', '<cmd>bd!<CR>')
 vim.keymap.set('n', '<leader><Space>', ':Telescope find_files<CR>')
+vim.keymap.set('n', '<leader>o', ':NvimTreeFindFileToggle<CR>')
 --vim.keys.normal_mode['<leader>o'] = ':EditVifm<CR>'
 vim.keymap.set('i', 'jk', '<ESC>')
 vim.keymap.set('i', 'JL', '{}<ESC>i')
@@ -575,6 +576,17 @@ require('lazy').setup({
     priority = 1000,
     init = function()
       vim.cmd.colorscheme 'catppuccin-mocha'
+    end,
+  },
+  {
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
+    lazy = false,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('nvim-tree').setup {}
     end,
   },
 
